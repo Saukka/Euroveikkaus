@@ -21,17 +21,17 @@ CREATE TABLE MATCHES (
 CREATE TABLE TEAMS (
     id SERIAL PRIMARY KEY,
     team TEXT,
-    Group_id TEXT
+    Group_id TEXT,
     groupresult INTEGER
 );
 
 CREATE TABLE matchguesses (
     id SERIAL PRIMARY KEY,
-    match_id SERIAL PRIMARY KEY,
+    match_id INTEGER,
     player TEXT,
     homegoals INTEGER,
-    awaygoals INTEGER
-    winner TEXT,
+    awaygoals INTEGER,
+    winner TEXT
 ); 
 CREATE TABLE matchresults (
     id SERIAL PRIMARY KEY,
@@ -43,7 +43,7 @@ CREATE TABLE matchresults (
 CREATE TABLE groupguesses (
     id SERIAL PRIMARY KEY,
     player TEXT,
-    group_id
-    team
-    finish
+    group_id INTEGER,
+    team TEXT,
+    finish INTEGER
 );

@@ -6,7 +6,7 @@ CREATE TABLE users (
 
 CREATE TABLE players (
     id SERIAL PRIMARY KEY,
-    username TEXT UNIQUE,
+    player TEXT UNIQUE,
     points INTEGER
 );
 

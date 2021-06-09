@@ -31,6 +31,7 @@ CREATE TABLE matchguesses (
     player TEXT,
     homegoals INTEGER,
     awaygoals INTEGER
+    winner TEXT,
 ); 
 CREATE TABLE matchresults (
     id SERIAL PRIMARY KEY,
@@ -38,4 +39,11 @@ CREATE TABLE matchresults (
     homegoals INTEGER,
     awaygoals INTEGER,
     winner INTEGER
+);
+CREATE TABLE groupguesses (
+    id SERIAL PRIMARY KEY,
+    player TEXT,
+    group_id
+    team
+    finish
 );

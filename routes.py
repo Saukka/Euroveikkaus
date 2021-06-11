@@ -22,6 +22,30 @@ def admin():
         return render_template ("adminmenu.html", players=players)
     return render_template ("error.html", message="Käyttäjä ei ole admin-käyttäjä")
     
+@app.route("/<string:player>")
+def show(player):
+    sql = "SELECT * FROM matches"
+    result = db.session.execute(sql)
+    matches = result.fetchall()
+    sql2 = "SELECT * FROM matchguesses WHERE player =:player"
+    result2 = db.session.execute(sql2, {"player":player})
+    matchguesses = result2.fetchall()
+    
+    sql3 = "SELECT * FROM finishguesses WHERE player = :player ORDER BY group_id, groupfinish"
+    result3 = db.session.execute(sql3, {"player":player})
+    groupguesses = result3.fetchall()
+    
+    sql4 = "SELECT * FROM finishguesses WHERE player = :player AND finalfinish IS NOT NULL ORDER BY finalfinish"
+    result4 = db.session.execute(sql4, {"player":player})
+    finishguesses = result4.fetchall()
+    
+    sql5 = "SELECT * FROM topplayers WHERE player = :player"
+    result5 = db.session.execute(sql5, {"player":player})
+    topplayers = result5.fetchall()
+    
+    return ("player.html", matches=matches, matchguesses=matchguesses, groupguesses = groupguesses, finishguesses = finishguesses, topplayers = topplayers)
+    
+    
 @app.route("/adminmenu/<string:player>")
 def set(player):
     return render_template("setplayer.html", player=player)
@@ -80,4 +104,19 @@ def commitguesses():
     fgroup = request.form["F"]
     actions.setgroupguess(player,"F",fgroup)
     
+    first = request.form["1"]
+    second = request.form["2"]
+    third = request.form["3to4"]
+    fifth = request.form["5to8"]
+    ninth = request.form["9to16"]
+    
+    actions.setfinish(player,1,first)
+    actions.setfinish(player,2,second)
+    actions.setfinish(player,3,third)
+    actions.setfinish(player,5,fifth)
+    actions.setfinish(player,9,ninth)
+    
+    scorer = request.form["topscorer"]
+    assister = request.form["topassister"]
+    actions.settopplayers(player, scorer, assister)
     return redirect("/")

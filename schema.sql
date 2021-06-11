@@ -44,3 +44,10 @@ CREATE TABLE finishguesses (
     groupfinish INTEGER,
     finalfinish INTEGER
 );
+
+CREATE TABLE topplayers (
+    id SERIAL PRIMARY KEY,
+    player TEXT,
+    scorerguess TEXT,
+    assisterguess TEXT
+);

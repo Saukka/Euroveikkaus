@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<head>
+<title>{{player}} veikkaukset</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<h3>Pelaajan {{player}} veikkaukset</h3>
+<br>
+<form action="/commitguesses" method="POST">
+    <p>Kopioi tulos ja voittaja pylväät alla olevaan laatikkoon</p>
+    <textarea id="matchguesses" name="matches"></textarea>
+    <h2>Lohkosijoitukset</h2>
+    <p>Kopioi maa ja sijoitus pylväät lohkon laatikkoon</p>
+    <h2>Lohko A</h2>
+    <textarea id="groupguess" name="A"></textarea><br>
+    <h2>Lohko B</h2>
+    <textarea id="groupguess" name="B"></textarea><br>
+    <h2>Lohko C</h2>
+    <textarea id="groupguess" name="C"></textarea><br>
+    <h2>Lohko D</h2>
+    <textarea id="groupguess" name="D"></textarea><br>
+    <h2>Lohko E</h2>
+    <textarea id="groupguess" name="E"></textarea><br>
+    <h2>Lohko F</h2>
+    <textarea id="groupguess" name="F"></textarea><br>
+    <h2>Kisojen sijoitukset</h2>
+    <p>Kohdissa 3-4, 5-8 ja 9-16 kopioi maat suoraan taulukosta</p>
+    1.<br> <textarea name="1" style="height:15px;"></textarea><br>
+    2.<br> <textarea name="2" style="height:15px;"></textarea><br>
+    3-4 <br><textarea name="3to4" style="height:40px;"></textarea><br>
+    5-8 <br><textarea name="5to8" style="height:60px;"></textarea><br>
+    9-16 <br> <textarea name="9to16" style="height:80px;"></textarea><br>
+    <h2>Paras maalintekijä</h2>
+    <textarea name="topscorer"></textarea><br>
+    <h2>Paras syöttäjä</h2>
+    <textarea name="topassister"></textarea><br>
+    <input type="hidden" name="pelaaja" value="{{player}}">
+    <input type="submit" value="Lähetä">
+    </form>
+</body>
+</html>

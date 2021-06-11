@@ -5,7 +5,7 @@ from os import getenv
 from app import app
 
 def login(username,password):
-    sql = "SELECT password, id FROM users WHERE username=:username"
+    sql = "SELECT password, id FROM userseuro WHERE username=:username"
     result = db.session.execute(sql, {"username":username})
     user = result.fetchone()
     if user == None:
@@ -27,12 +27,10 @@ def logout():
     
 def register(username,password):
     hash = generate_password_hash(password)
-    if len(username) < 3 or len(username) > 20 or len(password) < 6 or len(password) > 32:
-        return "Käyttäjätunnuksen tulee sisältää 3-20 merkkiä ja salasanan 6-32."
     try:
-        sql = "INSERT INTO users (username,password) VALUES (:username,:password)"
+        sql = "INSERT INTO userseuro (username,password) VALUES (:username,:password)"
         db.session.execute(sql, {"username":username,"password":hash})
         db.session.commit()
     except:
-        return "Rekisteröityminen epäonnistui. Kokeile toista käyttäjätunnusta"
+        return False
     return login(username,password)

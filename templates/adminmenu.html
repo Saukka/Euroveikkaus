@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<head>
+<title>Admin menu</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body style="background-color: #ffbdbd;">
+<a href="/logout" style="margin:auto;">Kirjaudu ulos</a>
+<br>
+<div id="playerlist">
+    {% for player in players %}
+    <p><a href="/adminmenu/{{player[1]}}">{{player[1]}}</a></p>
+    {% endfor %}
+    <form action="/newplayer" method="POST">
+        <input type="text" name="name" placeholder="nimi">
+        <br>
+        <input id="addplayer" type="submit" value="Lisää pelaaja">
+    </form>
+</div>
+<br>
+<br>
+<br>
+<a style="margin-top: 30px;" href="/">Etusivulle</a>
+</body>
+</html>

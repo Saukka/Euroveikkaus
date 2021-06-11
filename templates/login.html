@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<head>
+<title>Kirjaudu sisään</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body style="background-color: white;">
+
+<div id="logArea">
+    <a href="/"><div id="return"> Takaisin </a></div>
+    <form action="/login" method="POST">
+        <div id="textandbox">
+            <p style="text-align: left;">Tunnus<br>
+            <input id="logbox" type="text" name="username"></p>
+            <p style="text-align: left;">Salasana<br>
+            <input id="logbox" type="password" name="password"></p>
+        </div>
+        <input id="login" type="submit" value="Kirjaudu sisään">
+    </form>
+</div>
+</body>
+</html>.

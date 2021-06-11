@@ -1,4 +1,4 @@
-CREATE TABLE users (
+CREATE TABLE userseuro (
     id SERIAL PRIMARY KEY,
     username TEXT UNIQUE,
     password TEXT
@@ -15,14 +15,17 @@ CREATE TABLE MATCHES (
     home TEXT,
     AWAY TEXT,
     homegoals INTEGER,
-    awaygoals INTEGER
+    awaygoals INTEGER,
+    winner TEXT,
+    date TEXT
 );
 
 CREATE TABLE TEAMS (
     id SERIAL PRIMARY KEY,
     team TEXT,
     Group_id TEXT,
-    groupresult INTEGER
+    groupresult INTEGER,
+    finalresult INTEGER
 );
 
 CREATE TABLE matchguesses (
@@ -33,17 +36,11 @@ CREATE TABLE matchguesses (
     awaygoals INTEGER,
     winner TEXT
 ); 
-CREATE TABLE matchresults (
-    id SERIAL PRIMARY KEY,
-    match_id INTEGER,
-    homegoals INTEGER,
-    awaygoals INTEGER,
-    winner INTEGER
-);
-CREATE TABLE groupguesses (
+CREATE TABLE finishguesses (
     id SERIAL PRIMARY KEY,
     player TEXT,
-    group_id INTEGER,
+    group_id TEXT,
     team TEXT,
-    finish INTEGER
+    groupfinish INTEGER,
+    finalfinish INTEGER
 );

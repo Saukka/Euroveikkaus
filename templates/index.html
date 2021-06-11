@@ -4,30 +4,26 @@
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
-<h1>Euroveikkaus<h1>
+<h1>Euroveikkaus</h1>
 <br>
 <div id="players">
-    {% set i = 1 %}
     {% for player in players %}
-    {% if i == 1 %}
+    {% if loop.index == 1 %}
     <div id="player1">
-    {% elif i == 2 %}
+    {% elif loop.index == 2 %}
     <div id="player2">
-    {% elif i == 3 %}
+    {% elif loop.index == 3 %}
     <div id="player3">
     {% else %}
     <div id="player">
     {% endif %}
-    <a href="/{{player[1]}}">{{player[1]}}</a>
+    <a href="/{{player[1]}}">{{player[1]}} {{player[2]}}</a>
     </div>
-    {% set i = i + 1 %}
     {% endfor %}
 </div>
 
-<div =id"bottom">
+<div id="bottom">
     <a href="/adminmenu">Admin menu</a>
-    <br>
-    <a href="https://github.com/Saukka/Euroveikkaus">Source code</a>
 </div>
 </body>
 </html>

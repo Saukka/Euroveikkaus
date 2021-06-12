@@ -43,7 +43,7 @@ def show(player):
     result5 = db.session.execute(sql5, {"player":player})
     topplayers = result5.fetchall()
     
-    return ("player.html", matches=matches, matchguesses=matchguesses, groupguesses = groupguesses, finishguesses = finishguesses, topplayers = topplayers)
+    return render_template("player.html", matches = matches, matchguesses=matchguesses, groupguesses = groupguesses, finishguesses = finishguesses, topplayers = topplayers)
     
     
 @app.route("/adminmenu/<string:player>")

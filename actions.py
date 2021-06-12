@@ -74,3 +74,9 @@ def settopplayers(player, scorer, assister):
     db.session.execute(sql, {"player":player, "scorer":scorer, "assister":assister})
     db.session.commit()
     return True;
+
+def updatematchpoints():
+    i = 0
+    while i < 36:
+        i += 1
+    return True;

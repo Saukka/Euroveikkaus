@@ -34,7 +34,8 @@ CREATE TABLE matchguesses (
     player TEXT,
     homegoals INTEGER,
     awaygoals INTEGER,
-    winner TEXT
+    winner TEXT,
+    points INTEGER
 ); 
 CREATE TABLE finishguesses (
     id SERIAL PRIMARY KEY,

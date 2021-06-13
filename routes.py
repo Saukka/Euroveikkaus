@@ -24,10 +24,10 @@ def admin():
     
 @app.route("/<string:player>")
 def show(player):
-    sql = "SELECT * FROM matches"
+    sql = "SELECT * FROM matches ORDER BY id"
     result = db.session.execute(sql)
     matches = result.fetchall()
-    sql2 = "SELECT * FROM matchguesses WHERE player =:player"
+    sql2 = "SELECT * FROM matchguesses WHERE player =:player ORDER BY match_id"
     result2 = db.session.execute(sql2, {"player":player})
     matchguesses = result2.fetchall()
     
@@ -43,7 +43,11 @@ def show(player):
     result5 = db.session.execute(sql5, {"player":player})
     topplayers = result5.fetchall()
     
-    return render_template("player.html", matches = matches, matchguesses=matchguesses, groupguesses = groupguesses, finishguesses = finishguesses, topplayers = topplayers)
+    sql6 = "SELECT points FROM players WHERE player = :player"
+    result6 = db.session.execute(sql6, {"player":player})
+    points = result6.fetchall()
+    
+    return render_template("player.html", matches = matches, matchguesses=matchguesses, groupguesses = groupguesses, finishguesses = finishguesses, topplayers = topplayers, points = points)
     
     
 @app.route("/adminmenu/<string:player>")
@@ -120,3 +124,11 @@ def commitguesses():
     assister = request.form["topassister"]
     actions.settopplayers(player, scorer, assister)
     return redirect("/")
+
+@app.route("/updatepoints", methods=["POST"])
+def updatepoints():
+    number = request.form["number"]
+    print(int(number))
+    if int(number) < 37:
+        actions.updatematchpoints(int(number))
+    return redirect(request.referrer)

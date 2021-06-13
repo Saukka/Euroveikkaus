@@ -75,8 +75,38 @@ def settopplayers(player, scorer, assister):
     db.session.commit()
     return True;
 
-def updatematchpoints():
-    i = 0
-    while i < 36:
-        i += 1
-    return True;
+def updatematchpoints(i):
+        sql1 = "UPDATE matchguesses SET POINTS = 0 WHERE match_id=:i"
+        db.session.execute(sql1, {"i":i})
+        db.session.commit()
+        sql = "SELECT id, homegoals, awaygoals, winner FROM matches WHERE id=:i"
+        result = db.session.execute(sql, {"i":i})
+        info = result.fetchall()
+        if not info:
+            return False;
+        if info[0][1] == -1:
+            return False;
+        homegoals = info[0][1]
+        awaygoals = info[0][2]
+        winner = info[0][3]
+        
+        sql2 = "UPDATE matchguesses SET points = 1 WHERE match_id=:i AND (homegoals=:homegoals OR awaygoals=:awaygoals)"
+        db.session.execute(sql2, {"i":i, "homegoals":homegoals, "awaygoals":awaygoals})
+        db.session.commit()
+        
+        sql3 = "UPDATE matchguesses SET points = 3 WHERE match_id=:i AND winner=:winner"
+        db.session.execute(sql3, {"i":i, "winner":winner})
+        db.session.commit()
+        
+        sql4 = "UPDATE matchguesses SET points = 5 WHERE match_id=:i AND winner=:winner AND (homegoals=:homegoals OR awaygoals=:awaygoals)"
+        db.session.execute(sql4, {"i":i, "winner":winner, "homegoals":homegoals, "awaygoals":awaygoals})
+        db.session.commit()
+        
+        sql5 = "UPDATE matchguesses SET points = 9 WHERE match_id=:i AND winner=:winner AND homegoals=:homegoals AND awaygoals=:awaygoals"
+        db.session.execute(sql5, {"i":i, "winner":winner, "homegoals":homegoals, "awaygoals":awaygoals})
+        db.session.commit()
+        
+        sql6 = "UPDATE players p SET points = (SELECT SUM(points) FROM matchguesses m WHERE m.player = p.player);"
+        db.session.execute(sql6)
+        db.session.commit()
+        return True;

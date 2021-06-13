@@ -3,17 +3,17 @@
 <title>{{matchguesses[0][2]}} Veikkaukset</title>
 <link rel="stylesheet" href="/static/style.css">
 </head>
-<body style="background-color: #3e3e3e; color: #93fffa;">
+<body style="background-color: #3e3e3e; color: #93fffa; padding-bottom: 200px;">
 <h2 style="font-size:30px; margin-top: 35px; color:white; font-size:250%;">Pelaajan {{matchguesses[0][2]}} veikkaukset</h2>
-
+<span>Pisteitä yhteensä: {{points[0][0]}}</span>
 <div id="matches">
-<span style="font-size: 13px; color: #d857ff;">pisteet tulevat näkyviin lähiaikoina</span>
+<a id="return" href="/">Etusivulle</a>
 <h2 style="font-size:180%;">Ottelut</h2>
 {% for ottelu in matches %}
 <div id="match">
     <span id="teams">{{ottelu[1]}} - {{ottelu[2]}}</span><br><span id="date"> {{ottelu[6]}}</span><br><span id="guessandscore">Veikkaus: {{matchguesses[loop.index-1][3]}}-{{matchguesses[loop.index-1][4]}}   [{{matchguesses[loop.index-1][5]}}]<br>
     {% if not ottelu[3] == -1 %}
-    Tulos: {{ottelu[3]}}-{{ottelu[4]}} <br>Pisteet: {{matchguesses[loop.index-1][5]}}
+    Tulos: {{ottelu[3]}}-{{ottelu[4]}} <br>Pisteet: {{matchguesses[loop.index-1][6]}}
     {% else %}
     Tulos: -<br>Pisteet: -
     {% endif %}
@@ -57,6 +57,7 @@
     <h2 style="font-size:180%; color: white;">Parhaat pelaajat</h2>
     <span>Maalintekijä: {{topplayers[0][2]}}</span><br>
     <span>Syöttäjä: {{topplayers[0][3]}}
+</div>
 </div>
 </body>
 </html>

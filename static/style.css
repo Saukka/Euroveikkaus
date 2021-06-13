@@ -142,13 +142,13 @@ h1 {
 }
 
 #matchguesses {
-    width: 130px;
-    height: 500px;
+    width: 150px;
+    height: 600px;
 }
 #groupguess {
     font-size: 15px;
-    height: 100px;
-    width: 130px;
+    height: 170px;
+    width: 210px;
 }
 
 #matches {

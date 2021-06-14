@@ -14,8 +14,6 @@ def newplayer(name):
         return False;
     
 def setmatchguesses(player,guesses):
-    if guesses.startswith("stop"):
-        return True;
     if not session["user_id"] == 1:
         return False;
     try:

@@ -8,14 +8,19 @@
 <span>Pisteitä yhteensä: {{points[0][0]}}</span>
 <div id="matches">
 <a id="return" href="/">Etusivulle</a>
-<h2 style="font-size:180%;">Ottelut</h2>
+<h2 style="font-size:180%; color:white;">Pelatut ottelut</h2>
+{% set vars = {'upcoming': True} %}
 {% for ottelu in matches %}
 <div id="match">
+    {% if vars.upcoming and ottelu[3] == -1 %}
+        <hr>
+        <h2 style="font-size:180%; color:white;">Tulevat ottelut</h2>
+        <br>
+        {% if vars.update({'upcoming':False}) %} {% endif %}
+    {% endif %}
     <span id="teams">{{ottelu[1]}} - {{ottelu[2]}}</span><br><span id="date"> {{ottelu[6]}}</span><br><span id="guessandscore">Veikkaus: {{matchguesses[loop.index-1][3]}}-{{matchguesses[loop.index-1][4]}}   [{{matchguesses[loop.index-1][5]}}]<br>
     {% if not ottelu[3] == -1 %}
     Tulos: {{ottelu[3]}}-{{ottelu[4]}} <br>Pisteet: {{matchguesses[loop.index-1][6]}}
-    {% else %}
-    Tulos: -<br>Pisteet: -
     {% endif %}
     </span>
     <br>

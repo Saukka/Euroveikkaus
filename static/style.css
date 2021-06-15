@@ -58,8 +58,6 @@ h1 {
     bottom: 0;
     left: 0;
     right: 0;
-    padding-top: 100px;
-    padding-bottom: 100px;
 }
 
 #textandbox {
@@ -195,4 +193,15 @@ h1 {
 #topplayers {
     text-align: left;
     font-size: 22px;
+}
+
+.pointingarea {
+    font-size: 1.5em;
+    display: block;
+    width: fit-content;
+    line-height: 30px;
+    color: white;
+    text-align: left;
+    padding-top: 30px;
+    padding-left: 100px;
 }

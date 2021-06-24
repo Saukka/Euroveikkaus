@@ -135,9 +135,9 @@ def updatepoints():
 
 @app.route("/taulukko")
 def taulukko():
-    matchn = 31
+    matchn = 32
     
-    sql2 = "SELECT * FROM matches WHERE id > :match AND id < :match + 9 ORDER BY id"
+    sql2 = "SELECT * FROM matches WHERE id > :match ORDER BY id"
     result2 = db.session.execute(sql2, {"match":matchn})
     match = result2.fetchall()
     

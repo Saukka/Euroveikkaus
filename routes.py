@@ -135,10 +135,7 @@ def updatepoints():
 
 @app.route("/taulukko")
 def taulukko():
-    sql = "SELECT MIN(id) FROM matches WHERE homegoals = -1"
-    result = db.session.execute(sql)
-    matchn = result.fetchall()[0][0]
-    matchn = matchn - 5
+    matchn = 31
     
     sql2 = "SELECT * FROM matches WHERE id > :match AND id < :match + 9 ORDER BY id"
     result2 = db.session.execute(sql2, {"match":matchn})

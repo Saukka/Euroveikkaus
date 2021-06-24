@@ -10,7 +10,7 @@
 <a style="color:cyan; font-size:30px;"href="/">Etusivulle</a>
 <table id="table">
     <tbody>
-        {% for i in range(0,9) %}
+        {% for i in range(0,5) %}
         <tr>
             {% if i == 0 %}
             <th>Ottelu</th>
@@ -29,10 +29,8 @@
             {% if i == 0 %}
             {% set name = guess[j][2].split() %}
             <th>{{name[0]}}</th>
-            {% elif i < 5 %}
-            <td>{{guess[(i-1)*10 + j][3]}}-{{guess[(i-1)*10 + j][4]}} ({{guess[(i-1)*10 + j][6]}})</td>
             {% else %}
-            <td>{{guess[(i-1)*10 + j][3]}}-{{guess[(i-1)*10 + j][4]}}</td>
+            <td>{{guess[(i-1)*10 + j][3]}}-{{guess[(i-1)*10 + j][4]}} ({{guess[(i-1)*10 + j][6]}})</td>
             {% endif %}
             {% endfor %}
             </tr>

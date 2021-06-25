@@ -43,7 +43,7 @@ def show(player):
     result5 = db.session.execute(sql5, {"player":player})
     topplayers = result5.fetchall()
     
-    sql6 = "SELECT points FROM players WHERE player = :player"
+    sql6 = "SELECT * FROM players WHERE player = :player"
     result6 = db.session.execute(sql6, {"player":player})
     points = result6.fetchall()
     

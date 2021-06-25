@@ -106,7 +106,7 @@ def updatematchpoints(i):
         db.session.execute(sql5, {"i":i, "winner":winner, "homegoals":homegoals, "awaygoals":awaygoals})
         db.session.commit()
         
-        sql6 = "UPDATE players p SET points = (SELECT SUM(points) FROM matchguesses m WHERE m.player = p.player);"
+        sql6 = "UPDATE players p SET matchpoints = (SELECT SUM(points) FROM matchguesses m WHERE m.player = p.player);"
         db.session.execute(sql6)
         db.session.commit()
         return True;

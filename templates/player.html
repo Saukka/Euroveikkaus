@@ -4,8 +4,8 @@
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body style="background-color: #3e3e3e; color: #93fffa; padding-bottom: 200px;">
-<h2 style="font-size:30px; margin-top: 35px; color:white; font-size:250%;">Pelaajan {{matchguesses[0][2]}} veikkaukset</h2>
-<span>Pisteitä yhteensä: {{points[0][0]}}</span>
+<h2 style="font-size:30px; margin-top: 35px; color:white; font-size:250%;">Pelaajan {{points[0][1]}} veikkaukset</h2>
+<span>Pisteitä yhteensä: {{points[0][2]}}</span>
 <div id="matches">
 <a id="return" href="/">Etusivulle</a>
 <h2 style="font-size:180%; color:white;">Pelatut ottelut</h2>
@@ -26,6 +26,8 @@
     <br>
 </div>
 {% endfor %}
+<br>
+<span id="teams"> Otteluista pisteitä yhteensä: {{points[0][6]}}</span>
 </div>
 <div id="rightside">
     <div id ="groups">
@@ -34,10 +36,12 @@
         {% if ((loop.index - 1) % 4) == 0 %}
         <p style="font-size:26px; color: white;">Lohko {{joukkue[2]}}</p>
         {% endif %}
-        <span style="font-size:22px;">{{joukkue[4]}}. {{joukkue[3]}}</span>
+        <span style="font-size:22px;">{{joukkue[4]}}. {{joukkue[3]}} {{joukkue[6]}}p</span>
         <br>
         {% endfor %}
     </div>
+<br>
+<span>Alkulohkoista pisteitä yhteensä: {{points[0][3]}}
 <hr>
 <div id="finishes">
     <h2 style="font-size:180%; color: white;">Turnaussijoitukset</h2>
